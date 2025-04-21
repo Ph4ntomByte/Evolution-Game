@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Prog Evolutions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen">
+            <h1>Web Prog Evolutions</h1>
+            <div class="start-container">
+                <div class="input-group">
+                    <label for="player-name">Your Name:</label>
+                    <input type="text" id="player-name" placeholder="Enter your name">
+                </div>
+                <div class="difficulty-selector">
+                    <h2>Select Difficulty</h2>
+                    <div class="difficulty-options">
+                        <button class="difficulty-btn" data-difficulty="easy">Easy</button>
+                        <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+                        <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+                    </div>
+                </div>
+                <button id="play-btn" class="primary-btn">PLAY</button>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen hidden">
+            <div class="game-header">
+                <div class="player-info">
+                    <div class="player-name-display">Player: <span id="display-name"></span></div>
+                    <div class="difficulty-display">Level: <span id="display-difficulty"></span></div>
+                </div>
+                <div class="game-stats">
+                    <div class="timer">Time: <span id="time-remaining"></span></div>
+                    <div class="score">Score: <span id="current-score">0</span></div>
+                </div>
+                <div class="game-controls">
+                    <button id="back-btn" class="primary-btn" onclick="returnToStart()">Back</button>
+                </div>
+            </div>
+            
+            <div class="game-content">
+                <div class="scoring-table">
+                    <h3>Evolution Chains</h3>
+                    <div id="evolution-chains"></div>
+                </div>
+                
+                <div class="game-board-container">
+                    <div id="game-board"></div>
+                    <button id="draw-btn" class="primary-btn">DRAW</button>
+                </div>
+                
+                <div class="leaderboard">
+                    <h3>Leaderboard</h3>
+                    <div class="leaderboard-tabs">
+                        <button class="leaderboard-tab active" data-tab="easy">Easy</button>
+                        <button class="leaderboard-tab" data-tab="medium">Medium</button>
+                        <button class="leaderboard-tab" data-tab="hard">Hard</button>
+                    </div>
+                    <div id="leaderboard-content"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Game Over Popup -->
+        <div id="game-over" class="popup hidden">
+            <div class="popup-content">
+                <h2>Game Over!</h2>
+                <div class="final-score">
+                    <p>Your score: <span id="final-score">0</span></p>
+                </div>
+                <div class="popup-buttons">
+                    <button id="return-btn" class="primary-btn">Return to Start</button>
+                    <button id="restart-btn" class="primary-btn">Restart</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tech Tooltip -->
+        <div id="tech-tooltip" class="hidden">
+            <div class="tooltip-header">
+                <h3 id="tooltip-title"></h3>
+                <p id="tooltip-description"></p>
+            </div>
+            <div class="tooltip-evolution">
+                <img id="tooltip-evolution-img" src="" alt="Evolution Chain">
+            </div>
+        </div>
+    </div>
+
+    <script src="starter_pack/evolutions.js"></script>
+    <script src="game.js"></script>
+</body>
+</html> 

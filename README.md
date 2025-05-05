@@ -1,38 +1,109 @@
-Declaration
+# Railway Puzzle Game
 
-Rauf Suleymanov
-CVDJB
 
-This solution was submitted by the named student for the Web Programming / Web Development 2 course "JavaScript Assignment."
+**An Educational Puzzle Game Exploring the History of Web Programming Technologies**
 
-I declare that this solution is my own work. I have not copied or used solutions from third parties. I have not shared my solution with other students, nor have I published it online. I have not used AI-generated code. According to ELTE HKR 377/A. §, if I use unauthorized resources or provide unauthorized help to other students, I will not be able to complete the course.
+## 📖 Overview
+![alt text](starter_pack/Evolution_menu.png)
 
-ELTE Student Requirements System, IK Special Part, 377/A. §: "A student who, during an assessment (exam, midterm, or assignment) that requires the development of a computer program or module, uses resources not permitted by the instructor or provides unauthorized help to another student, commits an academic violation and will not be able to complete the course or earn its credits."
+**Web Prog Evolutions** is a browser-based educational puzzle game designed to help players understand the evolution of web development technologies. Through interactive gameplay and a visually engaging interface, players merge technologies from the past, present, and future across multiple evolution chains.
 
-Completed Tasks
+---
 
-Minimum Requirements (8 points)
-- [X] README.md – The game documentation is properly completed and included. (0 points)
-- [X] Avoiding Disallowed Practices – The listed bad practices have not been used. No points are awarded, but it is mandatory. (0 points)
-- [X] Displaying the Game Board – When the game starts, the game screen appears, generating a board of selectable size (4x4, 6x6, 8x8). (1 point)
-- [X] Random Starting Technologies – At the start of the game, 4, 6, or 8 random level 1 technologies are placed on the board. (2 points)
-- [X] Tooltip System – Hovering over an element for 3 seconds displays a tooltip with the evolution chain and description. (1 point)
-- [X] Generating New Technologies – The player can generate new level 1 technologies on the board (by clicking on an empty cell or the "DRAW" button). (2 points)
-- [X] Merging Technologies – If two identical elements merge, a higher-level technology is created. (2 points)
+## 🕹️ Gameplay
+![alt text](starter_pack/Evolution_game_play.png)
+- **Three Difficulty Levels:** Easy (4x4), Medium (6x6), Hard (8x8)
+- **Time Limits:** 10, 15, and 20 minutes respectively
+- **Merging Mechanic:** Combine two identical technologies to evolve them to the next level
+- **Goal:** Complete all evolution chains and earn as many points as possible before time runs out
 
-Core Tasks (12 points)
-- [X] Start Screen – The player can enter their name and choose a difficulty level. (1 point)
-- [X] Game UI – The player's name, score, and the level's time limit are displayed. (1 point)
-- [X] Game UI – The selected difficulty level determines the time limit, board size, and available evolution elements. (3 points)
-- [X] Scoring – Completing evolution chains adds points to the total score and the respective technology's score. (2 points)
-- [X] Time Management – The time limit (10-15-20 minutes) decreases as the game progresses. (1 point)
-- [X] Time Management – The game ends when the set time limit runs out. (1 point)
-- [X] Game Over Screen – A popup appears at the end of the game displaying the results. (1 point)
-- [X] Leaderboard – The final score is compared to the top scores for the selected difficulty level. (1 point)
-- [X] Polished Appearance – The game has a visually appropriate design (grid layout, tooltip animations, icons). (1 point)
+### Evolution Chain Rules
 
-Bonus Tasks (5 points)
-- [X] Step Animations – Merging technologies includes an animated transition. (1 point)
-- [X] Weighted Random Generation – New technology generation takes difficulty level into account. (1 point)
-- [X] Save Feature – The game continuously saves its state to localStorage. If a saved state exists when the page loads, it is restored; otherwise, a new game starts. (2 points)
-- [X] Restart Option – The Game Over screen provides options to start a new game or restart with the same settings. (1 point)
+- Each chain consists of 6 levels
+- Completing a full chain grants:
+  - 5 points (Easy)
+  - 10 points (Medium)
+  - 15 points (Hard)
+
+---
+
+## 🎮 Game Flow
+
+### Start Screen
+- Players input their name and select a difficulty level
+- Clicking **PLAY** begins the game
+
+### Game Screen
+Divided into 4 sections:
+1. **Game Data**: Shows name, difficulty, score, and time left
+2. **Scoring Table**: Lists all evolution chains and points earned
+3. **Game Board**: The grid where merging takes place
+4. **Leaderboard**: Displays top 5 scores per difficulty
+
+### Tooltips
+- Hovering over a technology for 3 seconds displays:
+  - Name
+  - Short description
+  - Full evolution chain image
+
+### Game End
+- When time runs out, a popup displays:
+  - Final score
+  - Option to restart or return to the menu
+  - High scores are recorded in the leaderboard if qualified
+
+---
+
+## 🧩 Technologies & Evolution Chains
+
+- Stored in `evolutions.js` as a JSON structure
+- Each chain includes:
+  - Name, tooltip, description, difficulty level, point value
+  - 6 steps, each with name, icon (`img`), and description
+
+Example format:
+```json
+{
+  "name": "Database Evolution",
+  "tooltip": "DB.png",
+  "points": 15,
+  "difficulty": "hard",
+  "description": "The development of database management systems from simple text storage to blockchain.",
+  "steps": [
+    {
+      "step": 1,
+      "name": "CSV",
+      "img": "csv.png",
+      "description": "A simple format for storing structured data in plain text."
+    },
+    ...
+  ]
+}
+```
+
+---
+
+## 🧪 Development Guide
+
+### 1. UI Design
+- Responsive and square-based grid layout
+- Works well on 1024x768 resolution and above
+- Uses tooltips, icons, and minimalist visual cues
+
+### 2. Game Logic
+- Board is dynamically generated based on difficulty
+- Game state is stored in matrix structures
+- Only essential data is stored; derived data is computed as needed
+
+### 3. Interaction
+- Clicking an empty cell: generates a random level 1 tech
+- Merging: creates next-level tech and replaces one cell with a new level 1 tech
+- Final level (6): clicking removes it and awards points
+
+### 4. Event Handling
+- Grid click
+- Tooltip hover
+- Play/restart button
+- Timer expiration
+
+
